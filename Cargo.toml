@@ -1,0 +1,16 @@
+[workspace]
+members = ["src/hello_world", "src/did", "integration-tests"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+rust-version = "1.85"
+
+[workspace.dependencies]
+candid = { version = "0.10", features = ["value"] }
+ic-cdk = "0.17"
+ic-cdk-macros = "0.17"
+ic-stable-structures = "0.6.8"
+serde = "1"

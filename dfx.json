@@ -1,0 +1,25 @@
+{
+  "dfx": "0.25.0",
+  "canisters": {
+    "hello_world": {
+      "type": "rust",
+      "package": "hello_world",
+      "candid": "./.artifact/hello_world.did",
+      "declarations": {
+        "node_compatibility": true
+      }
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": ""
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
