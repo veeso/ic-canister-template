@@ -13,8 +13,8 @@ A template for building Internet Computer canisters with Rust.
 - [Rust (1.85 or later)](https://rustup.rs/): to build the canisters
 - [DFX](https://internetcomputer.org/docs/building-apps/getting-started/install) (v0.23 or later)
 - [Just](https://just.systems/) to run scripts
-- [ic-wasm](https://github.com/dfinity/ic-wasm/releases): to bundle the canisters
-- [candid-extractor](https://github.com/dfinity/cdk-rs/releases/): to extract the candid interface of the canisters
+- [ic-wasm](https://github.com/dfinity/ic-wasm): to bundle the canisters
+- [candid-extractor](https://github.com/dfinity/candid-extractor): to extract the candid interface of the canisters
 
 ### Build canisters
 
