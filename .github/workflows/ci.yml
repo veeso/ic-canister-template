@@ -1,7 +1,7 @@
 name: build_and_test
 
 env:
-  RUST_VERSION: 1.86.0
+  RUST_VERSION: 1.87.0
 
 on:
   push:
@@ -36,7 +36,7 @@ jobs:
 
       - name: install candid-extractor
         run: |
-          wget https://github.com/dfinity/cdk-rs/releases/download/candid-extractor-v0.1.4/candid-extractor-x86_64-unknown-linux-gnu.tar.gz -O /tmp/candid-extractor-x86_64-unknown-linux-gnu.tar.gz
+          wget https://github.com/dfinity/cdk-rs/releases/download/candid-extractor-v0.1.6/candid-extractor-x86_64-unknown-linux-gnu.tar.gz -O /tmp/candid-extractor-x86_64-unknown-linux-gnu.tar.gz
           tar -xvf /tmp/candid-extractor-x86_64-unknown-linux-gnu.tar.gz -C /usr/local/bin
           chmod +x /usr/local/bin/candid-extractor
 

@@ -1,12 +1,10 @@
 use candid::Encode;
 use did::State;
+use integration_tests::TestEnv as _;
 use integration_tests::actor::admin;
-use integration_tests::{PocketIcTestEnv, TestEnv as _};
 
-#[tokio::test]
-async fn test_should_set_and_get_state() {
-    let env = PocketIcTestEnv::init().await;
-
+#[pocket_test::test]
+async fn test_should_set_and_get_state(env: PocketIcTestEnv) {
     let canister = env.hello_world();
     let new_state = State {
         name: "test".to_string(),

@@ -1,3 +1,5 @@
+mod env;
+
 use std::io::Read as _;
 use std::path::PathBuf;
 
@@ -76,7 +78,7 @@ impl TestEnv for PocketIcTestEnv {
 impl PocketIcTestEnv {
     /// Install the canisters needed for the tests
     pub async fn init() -> Self {
-        let pic = ic_exports::pocket_ic::init_pocket_ic()
+        let pic = env::init_pocket_ic()
             .await
             .with_nns_subnet()
             .with_ii_subnet() // To have ECDSA keys
@@ -92,6 +94,10 @@ impl PocketIcTestEnv {
         Self::install_hello_world(&pic, hello_world).await;
 
         Self { hello_world, pic }
+    }
+
+    pub async fn stop(self) {
+        self.pic.drop().await;
     }
 
     fn is_live(&self) -> bool {
