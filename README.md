@@ -10,7 +10,7 @@ A template for building Internet Computer canisters with Rust.
 
 ### Prerequisites
 
-- [Rust (1.85 or later)](https://rustup.rs/): to build the canisters
+- [Rust (1.89 or later)](https://rustup.rs/): to build the canisters
 - [DFX](https://internetcomputer.org/docs/building-apps/getting-started/install) (v0.23 or later)
 - [Just](https://just.systems/) to run scripts
 - [ic-wasm](https://github.com/dfinity/ic-wasm): to bundle the canisters
