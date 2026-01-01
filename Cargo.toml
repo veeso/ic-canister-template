@@ -6,26 +6,26 @@ resolver = "2"
 version = "0.1.0"
 edition = "2024"
 license = "MIT"
-rust-version = "1.85"
+rust-version = "1.89"
 repository = "https://github.com/veeso/ic-canister-template"
 
 [workspace.dependencies]
 candid = { version = "0.10", features = ["value"] }
-ic-cdk = "0.18"
-ic-cdk-macros = "0.18"
-ic-stable-structures = "0.6.8"
+ic-cdk = "0.19"
+ic-cdk-macros = "0.19"
+ic-stable-structures = "0.7"
 serde = "1"
 
 # integration-tests
 anyhow = "1"
 flate2 = "1"
-ic-agent = "0.40"
-ic-ledger-types = "0.15.0"
-ic-utils = "0.40"
+ic-agent = "0.45"
+ic-ledger-types = "0.16.0"
+ic-utils = "0.45"
 log = "0.4"
-pocket-ic = "9"
+pocket-ic = "11"
 proc-macro2 = "1"
 quote = "1"
-reqwest = { version = "0.12" }
+reqwest = { version = "0.13" }
 syn = "2"
 tokio = { version = "1", features = ["full"] }

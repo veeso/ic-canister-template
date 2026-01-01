@@ -9,14 +9,18 @@ pub struct State {
 }
 
 impl Storable for State {
-    const BOUND: ic_stable_structures::storable::Bound =
-        ic_stable_structures::storable::Bound::Unbounded;
+    fn to_bytes(&self) -> std::borrow::Cow<'_, [u8]> {
+        Encode!(self).unwrap().into()
+    }
+
+    fn into_bytes(self) -> Vec<u8> {
+        Encode!(&self).unwrap()
+    }
 
     fn from_bytes(bytes: std::borrow::Cow<[u8]>) -> Self {
         Decode!(bytes.as_ref(), Self).unwrap()
     }
 
-    fn to_bytes(&self) -> std::borrow::Cow<[u8]> {
-        Encode!(self).unwrap().into()
-    }
+    const BOUND: ic_stable_structures::storable::Bound =
+        ic_stable_structures::storable::Bound::Unbounded;
 }

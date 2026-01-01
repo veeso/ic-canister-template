@@ -11,13 +11,13 @@ use memory::{MEMORY_MANAGER, STATE_MEMORY_ID};
 thread_local! {
     /// Initialize the state randomness with the current time.
     static STATE: RefCell<StableCell<State, VirtualMemory<DefaultMemoryImpl>>> =
-        RefCell::new(StableCell::new(MEMORY_MANAGER.with(|mm| mm.get(STATE_MEMORY_ID)), State::default()).unwrap());
+        RefCell::new(StableCell::new(MEMORY_MANAGER.with(|mm| mm.get(STATE_MEMORY_ID)), State::default()));
 }
 
 #[update]
 fn set_state(state: State) {
     STATE.with_borrow_mut(|s| {
-        s.set(state).unwrap();
+        s.set(state);
     });
 }
 

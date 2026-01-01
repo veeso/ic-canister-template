@@ -8,7 +8,7 @@ use log::*;
 pub use pocket_ic::PocketIcBuilder;
 use tokio::sync::OnceCell;
 
-const POCKET_IC_SERVER_VERSION: &str = "9.0.1";
+const POCKET_IC_SERVER_VERSION: &str = "11.0.0";
 const POCKET_IC_BIN: &str = "POCKET_IC_BIN";
 
 /// Returns the pocket-ic client.
@@ -100,9 +100,14 @@ async fn download_binary(pocket_ic_dir: PathBuf) -> PathBuf {
         "macos" => "darwin",
         _ => panic!("pocket-ic requires linux or macos"),
     };
+    let arch = match env::consts::ARCH {
+        "x86_64" => "x86_64",
+        "aarch64" | "arm64" => "arm64",
+        _ => panic!("pocket-ic requires x86_64 or aarch64 architecture"),
+    };
 
     let download_url = format!(
-        "https://github.com/dfinity/pocketic/releases/download/{POCKET_IC_SERVER_VERSION}/pocket-ic-x86_64-{platform}.gz"
+        "https://github.com/dfinity/pocketic/releases/download/{POCKET_IC_SERVER_VERSION}/pocket-ic-{arch}-{platform}.gz"
     );
 
     // Download file

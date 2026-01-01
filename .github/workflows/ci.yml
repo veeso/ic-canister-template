@@ -1,7 +1,7 @@
 name: build_and_test
 
 env:
-  RUST_VERSION: 1.87.0
+  RUST_VERSION: 1.89.0
 
 on:
   push:
@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/cache@v3
+      - uses: actions/checkout@v6
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.cargo/registry
@@ -27,11 +27,11 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}-1
 
       - name: Install Just command runner
-        uses: extractions/setup-just@v1
+        uses: extractions/setup-just@v3
 
       - name: install ic-wasm
         run: |
-          wget https://github.com/dfinity/ic-wasm/releases/download/0.8.1/ic-wasm-linux64 -O /usr/local/bin/ic-wasm
+          wget https://github.com/dfinity/ic-wasm/releases/download/0.9.9/ic-wasm-linux64 -O /usr/local/bin/ic-wasm
           chmod +x /usr/local/bin/ic-wasm
 
       - name: install candid-extractor
@@ -51,6 +51,13 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: nightly
+          components: rustfmt
+
+      - name: Install Rust (wasm32-unknown-unknown target)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: $RUST_VERSION
+          target: wasm32-unknown-unknown
           components: rustfmt
 
       - name: check rust code style
